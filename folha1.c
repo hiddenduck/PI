@@ -39,10 +39,4 @@ void quadrado2 (int n){
 }
 
 //3.3
-void vertical (i)
 
-void main(){
-    triangulo(5);
-    
-}
-//3.3

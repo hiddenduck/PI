@@ -108,13 +108,16 @@ void quadrado2 (int n){
 }
 //4
 void circulo (int r){
+    int c;
     for(int i = 0; i <= 2*r; i++){
         for(int j = 0; j <= 2*r; j++){
-            if(pow((i-r),2) + pow((j-r),2) <= r*r)
+            if(pow((i-r),2) + pow((j-r),2) <= r*r){
                 putchar('#');
-            else
+		c++;
+	    }else
                 putchar(' ');
         }
         putchar('\n');
     }
+	return c;
 }

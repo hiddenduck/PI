@@ -107,16 +107,10 @@ void quadrado2 (int n){
     }  
 }
 //4
-int verifica (int i, int j, int r){
-    if(pow((i-r),2) + pow((j-r),2) <= r*r)
-        return 1;
-    else
-        return 0;
-}
 void circulo (int r){
     for(int i = 0; i <= 2*r; i++){
         for(int j = 0; j <= 2*r; j++){
-            if(verifica(i,j,r) == 1)
+            if(pow((i-r),2) + pow((j-r),2) <= r*r)
                 putchar('#');
             else
                 putchar(' ');

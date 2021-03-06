@@ -32,7 +32,6 @@ float multInt3 (int n, float m){
         }
         n /= 2;
         m *= 2;
-        count++;
     }
     printf("Foram feitas %d operacoes\n", count);
     return r;

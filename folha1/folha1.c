@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-/*Exercicio 1.1
+/* Exercicio 1.1
 int x,y;
 x = 3;
 y = x+1;

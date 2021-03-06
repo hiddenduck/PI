@@ -53,22 +53,40 @@ int mdc1 (int a, int b){
 
 //4
 int mdc2(int a, int b){
-    if(b > a)
-        mdc2(b,a);
-    else{
-        while(a != b)
+    while(b != 0){
+        if(a > b){
             a -= b;
+        }else{
+            b -= a;
+        }
     }
     return a;
 }
 
+int mdc2cContador(int a, int b){
+    int contador = 0;
+    while(a != 0 && b != 0){
+        if(a > b){
+            a -= b;
+            contador++;
+        }else{
+            b -= a;
+            contador++;
+        }
+    }
+    printf("%d", contador);
+    return a;
+}
+
+
 //5
 int mdc3(int a, int b){
-    if(b > a)
-        mdc2(b,a);
-    else{
-        while(a != b)
+    while(a != 0 && b != 0){
+        if(a > b){
             a %= b;
+        }else{
+            b %= a;
+        }
     }
     return a;
 }
@@ -97,11 +115,4 @@ int fib2 (int n){
         acc1 = r;
     }
     return acc2;
-}
-
-int main(){
-
-    int z = fib1(4);
-    printf("%d", z);
-    return 0;
 }

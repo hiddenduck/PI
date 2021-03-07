@@ -45,7 +45,35 @@ void exe3(){
     printf("Segundo Maior Numero Inteiro: %d\n", maximo2);
 }
 
-int main(){
-    exe3();
-    return 0;
+//4
+int bitsUm (unsigned int x){
+    int r=0;
+    while(x != 0){
+        if(x%2 != 0) // se o resto de x por 2 for impar isto é, 1 o contador soma mais 1
+            r++;
+    x /= 2;
+    }
+    return r;
+}
+
+//5
+int trailingZ (unsigned int n) {
+    int contador = 0;
+    do{
+        if(n % 2)
+            break;
+        n /= 2;
+        contador++;
+    }while(n != 0);
+
+    return contador;
+}
+//6
+int qDig (int n) {
+    int r = 0;
+    while(n != 0){
+        r++;
+        n /= 10;
+    }
+    return r;
 }

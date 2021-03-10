@@ -21,7 +21,7 @@ float multInt2 (int n, float m){
 }
 
 float multInt3 (int n, float m, int *count){
-    double r=0, c=0;
+    double r=0;
     while(n){
         if(n % 2)
             r += m;

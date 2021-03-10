@@ -20,18 +20,15 @@ float multInt2 (int n, float m){
     return r;
 }
 
-float multInt3 (int n, float m){
-    double r = 0;
-    int count = 0;
-    for(int i = 0; n > 0; i++){
-        if(n % 2){
+float multInt3 (int n, float m, int *count){
+    double r=0, c=0;
+    while(n){
+        if(n % 2)
             r += m;
-            count++;
-        }
         n /= 2;
         m *= 2;
+        (*count)++;
     }
-    printf("Foram feitas %d operacoes\n", count);
     return r;
 }
 

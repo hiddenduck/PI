@@ -109,6 +109,7 @@ int mdc3_1(int a, int b, int *count){
 //6
 
 //a)
+
 int fib1 (int n){
     if(n < 1)
         return 0;
@@ -121,6 +122,7 @@ int fib1 (int n){
 }
 
 //b)
+
 int fib2 (int n){
     int r = 0,
      acc1 = 1,

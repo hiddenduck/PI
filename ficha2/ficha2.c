@@ -44,6 +44,20 @@ int mdc1 (int a, int b){
         return divisor;
     }
 }
+//ou (sem recursividade)
+int mdc1_2 (int a, int b){
+    int menor, r;
+    if(a>b) menor=b;
+    else menor=a;
+    while(menor>0){
+        if(a%menor==0 && b%menor==0){
+            r=menor;
+            menor=0;
+        }
+        menor--;
+    }
+    return r;
+}
 
 //4
 int mdc2(int a, int b){

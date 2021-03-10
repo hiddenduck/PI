@@ -111,14 +111,10 @@ int mdc3_1(int a, int b, int *count){
 //a)
 
 int fib1 (int n){
-    if(n < 1)
-        return 0;
-    else{
-        if(n == 1)
-            return 1;
-        else
-            return(fib1 (n-1) + fib1(n-2));
-    }
+    if(n < 2)
+        return n;
+    else
+        return(fib1 (n-1) + fib1(n-2));
 }
 
 //b)

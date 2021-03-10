@@ -11,7 +11,7 @@ float multInt1 (int n, float m){
 //2
 float multInt2 (int n, float m){
     double r = 0;
-    for(int i = 0; n > 0; i++){
+    while(n){
         if(n % 2)
             r += m;
         n /= 2;

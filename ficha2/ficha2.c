@@ -62,42 +62,42 @@ int mdc1_2 (int a, int b){
 
 //4
 int mdc2(int a, int b){
-    while(b != 0){
-        if(a > b){
-            a -= b;
-        }else{
-            b -= a;
-        }
+    
+    while(a>0 && b<0){
+        if(a > b) a -= b;
+        else b -= a;
     }
-    return a;
+    return (a+b);
 }
 
-int mdc2cContador(int a, int b){
-    int contador = 0;
-    while(a != 0 && b != 0){
-        if(a > b){
-            a -= b;
-            contador++;
-        }else{
-            b -= a;
-            contador++;
-        }
+int mdc2_1(int a, int b, int *count){
+    
+    while(a>0 && b<0){
+        if(a > b) a -= b;
+        else b -= a;
+        (*count)++;
     }
-    printf("%d", contador);
-    return a;
+    return (a+b);
 }
-
 
 //5
 int mdc3(int a, int b){
-    while(a != 0 && b != 0){
-        if(a > b){
-            a %= b;
-        }else{
-            b %= a;
-        }
+
+     while(a>0 && b<0){
+        if(a > b) a %= b;
+        else b %= a;
     }
-    return a;
+    return (a+b);
+}
+
+int mdc3_1(int a, int b, int *count){
+    
+    while(a>0 && b<0){
+        if(a > b) a %= b;
+        else b %= a;
+        (*count)++;
+    }
+    return (a+b);
 }
 
 //6

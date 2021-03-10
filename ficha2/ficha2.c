@@ -44,6 +44,7 @@ int mdc1 (int a, int b){
         return divisor;
     }
 }
+
 //ou (sem recursividade)
 int mdc1_2 (int a, int b){
     int menor, r;

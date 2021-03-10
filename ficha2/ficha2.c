@@ -4,9 +4,7 @@
 //1
 float multInt1 (int n, float m){
     double r = 0;
-    int count = 0;
-    for(int i = 0; i < n; i++)
-        r += m;
+    for(int i = 0; i < n; i++, r+=m);
     return r;
 }
 

@@ -77,3 +77,19 @@ int qDig (int n) {
     }
     return r;
 }
+
+//7
+char comprimento(char s1[]){
+    int i;
+    for(i=0; s1[i] != '\0'; i++);
+    return i;
+}
+
+char *mystrcat(char s1[], char s2[]){
+    int l1 = comprimento(s1),
+        l2 = comprimento(s2),
+        i;
+    for(i=0; i<l2; i++) s1[l1+i] = s2[i];
+    s1[l1+i] = '\0';
+    return s1;
+}

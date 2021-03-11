@@ -2,7 +2,6 @@
 #include <math.h>
 
 //1
-
 float multInt1 (int n, float m){
     double r = 0;
     for(int i = 0; i < n; i++, r+=m);
@@ -10,7 +9,6 @@ float multInt1 (int n, float m){
 }
 
 //2
-
 float multInt2 (int n, float m){
     double r = 0;
     while(n){
@@ -35,7 +33,6 @@ float multInt3 (int n, float m, int *count){
 }
 
 //3
-
 int mdc1 (int a, int b){
     if(b > a)
         mdc1(b,a);
@@ -49,7 +46,6 @@ int mdc1 (int a, int b){
 }
 
 //ou (sem recursividade)
-
 int mdc1_2 (int a, int b){
     int menor, r;
     if(a>b) menor=b;
@@ -65,7 +61,6 @@ int mdc1_2 (int a, int b){
 }
 
 //4
-
 int mdc2(int a, int b){
     
     while(a>0 && b<0){
@@ -86,7 +81,6 @@ int mdc2_1(int a, int b, int *count){
 }
 
 //5
-
 int mdc3(int a, int b){
 
      while(a>0 && b<0){
@@ -107,9 +101,7 @@ int mdc3_1(int a, int b, int *count){
 }
 
 //6
-
 //a)
-
 int fib1 (int n){
     if(n < 2)
         return n;
@@ -118,7 +110,6 @@ int fib1 (int n){
 }
 
 //b)
-
 int fib2 (int n){
     int r = 0,
      acc1 = 1,

@@ -18,4 +18,53 @@ Output: 1 1 4
         3 3 8
         4 4 10
         5 5 12
+
+b)
+Inicio/Desenvolvimento:
+i = 3;
+j = 5;
+a = b = 42 ou seja b = 42; a = 42
+porém
+a e b tomam os valores dos enderelos de i e j, portanto o valor 42 é descartado
+i++ isto é i = i + 1 (=) i = 3 + 1 (=) i = 4;
+j = i + *b (=) j = 4 + 5 (=) j = 9;
+b = a (=) b = &i;
+j = j + *b (=) j = 9 + 4 (=) j = 13;
+Output: 13
+
+(o \n muda de linha no final)
 */
+
+//2
+void swapM (int *x, int *y){
+    int t;
+    t = *x;
+    *x = *y;
+    *y = t;
+}
+
+//3
+void swap (int v[], int i, int j){
+    int t;
+    v[i] = t;
+    v[i] = v[j];
+    v[j] = t;
+}
+
+//4
+int soma (int v[], int N){
+    int acc=0;
+    for(int i=0; i < N; i++){
+        acc += v[i];
+    }
+    return acc;    
+}
+
+//5
+void inverteArray1 (int v[], int N){
+
+}
+
+int main(){
+    return 0;
+}

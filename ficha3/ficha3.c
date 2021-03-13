@@ -63,6 +63,12 @@ int soma (int v[], int N){
 //5
 void inverteArray1 (int v[], int N){
     for(int i=0; i<N; i++, N--){
+        swapM(&v[i], &v[N-1]);
+    }
+}
+
+void inverteArray2 (int v[], int N){
+    for(int i=0; i<N; i++, N--){
         swap(v, i, N-1);
     }
 }
@@ -85,4 +91,5 @@ void quadrados (int q[], int N){
 
 //8
 //a)
+
 

@@ -46,7 +46,7 @@ void swapM (int *x, int *y){
 //3
 void swap (int v[], int i, int j){
     int t;
-    v[i] = t;
+    t = v[i];
     v[i] = v[j];
     v[j] = t;
 }
@@ -60,11 +60,28 @@ int soma (int v[], int N){
     return acc;    
 }
 
-//5
 void inverteArray1 (int v[], int N){
-
+    for(int i=0; i<N; i++, N--){
+        swap(v, i, N-1);
+    }
 }
 
-int main(){
-    return 0;
+//6
+int maximum (int v[], int N, int *m){
+    for(int i=0; i<N; i++){
+        if(v[i] > *m)
+            *m = v[i];
+    }
+    return *m;
 }
+
+//7
+void quadrados (int q[], int N){
+    for(int i=0; i<N; i++){
+        q[i] = i*i;
+    }
+}
+
+//8
+//a)
+

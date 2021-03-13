@@ -60,6 +60,7 @@ int soma (int v[], int N){
     return acc;    
 }
 
+//5
 void inverteArray1 (int v[], int N){
     for(int i=0; i<N; i++, N--){
         swap(v, i, N-1);

@@ -74,10 +74,11 @@ void inverteArray2 (int v[], int N){
 int maximum (int v[], int N, int *m){
     if(N < 0) return 1;
     else{
-    for(int i=0; i<N; i++){
-        if(v[i] > *m)
-            *m = v[i];
-    }
+        int i;
+        for(i=0, *m=v[i]; i<N; i++){
+            if(v[i] > *m)
+                *m = v[i];
+        }
     return 0;
     }
 }

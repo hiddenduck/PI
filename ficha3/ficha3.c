@@ -49,7 +49,6 @@ void swap (int v[], int i, int j){
 }
 
 // ou, a partir da swapM
-
 void swap2 (int v[], int i, int j){
     swapM(v+i, v+j); // &v[i] -> &(*(v+i)), é mais simples fazer v + indice do que &v[indice]
 }

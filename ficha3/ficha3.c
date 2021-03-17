@@ -99,9 +99,7 @@ int maximum (int v[], int N, int *m){
 
 //7
 void quadrados (int q[], int N){
-    for(int i=0; i<N; i++){
-        q[i] = i*i;
-    }
+    for(int i=0; i<N; q[i] = i*i, i++);
 }
 
 //8

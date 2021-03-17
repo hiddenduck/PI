@@ -48,19 +48,32 @@ void swap (int v[], int i, int j){
     v[j] = t;
 }
 
+// ou, a partir da swapM
+
+void swap2 (int v[], int i, int j){
+    swapM(v+i, v+j); // &v[i] -> &(*(v+i)), é mais simples fazer v + indice do que &v[indice]
+}
+
 //4
 int soma (int v[], int N){
     int acc=0;
-    for(int i=0; i < N; i++){
-        acc += v[i];
-    }
+    for(int i=0; i < N; acc += v[i++]);
     return acc;    
+}
+
+//ou
+int soma2 (int v[], int N){
+  int soma = 0;
+
+  while(N)
+    soma += v[--N];
+  return soma;
 }
 
 //5
 void inverteArray1 (int v[], int N){
     for(int i=0; i<N; i++, N--){
-        swapM(&v[i], &v[N-1]);
+        swapM(v+i, v + (N-1));
     }
 }
 
@@ -94,3 +107,13 @@ void quadrados (int q[], int N){
 //a)
 
 
+
+/*
+         1
+        1 1
+       1 2 1
+      1 3 3 1
+     1 4 6 4 1
+
+
+*/

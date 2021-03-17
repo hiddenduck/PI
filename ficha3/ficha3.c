@@ -97,6 +97,21 @@ int maximum (int v[], int N, int *m){
     return r;
 }
 
+// de outra forma
+int maximum2 (int v[], int N, int *m){
+  int r = 1;
+  if(N>0){
+    int i;
+    *m=v[0];
+    for(i=1; i<N; i++){
+      if(*m<v[i])
+       *m = v[i];
+    }
+    r = 0;  
+  }
+  return r;
+}
+
 //7
 void quadrados (int q[], int N){
     for(int i=0; i<N; q[i] = i*i, i++);

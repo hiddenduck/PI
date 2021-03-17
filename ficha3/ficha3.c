@@ -104,9 +104,6 @@ void quadrados (int q[], int N){
 
 //8
 //a)
-
-
-
 /*
          1
         1 1

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /*Exercicio 1.1
 int x,y;
 x = 3;
@@ -84,6 +85,7 @@ d)Output:
 0111
 1111
 */
+
 //3
 //3.1
 void quadrado (int n){
@@ -94,6 +96,7 @@ void quadrado (int n){
         putchar('\n');
     }  
 }
+
 //3.2
 void quadrado2 (int n){
     for (int i = 0; i < n; i++){
@@ -106,6 +109,7 @@ void quadrado2 (int n){
         putchar('\n');
     }  
 }
+
 //4
 void circulo (int r){
     int c;

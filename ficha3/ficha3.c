@@ -84,15 +84,17 @@ void inverteArray2 (int v[], int N){
 
 //6
 int maximum (int v[], int N, int *m){
-    if(N < 0) return 1;
+    int r;
+    if(N < 0) r = -1;
     else{
         int i;
         for(i=0, *m=v[i]; i<N; i++){
             if(v[i] > *m)
                 *m = v[i];
         }
-    return 0;
+        r = 0;
     }
+    return r;
 }
 
 //7
@@ -110,6 +112,4 @@ void quadrados (int q[], int N){
        1 2 1
       1 3 3 1
      1 4 6 4 1
-
-
 */

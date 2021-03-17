@@ -113,8 +113,22 @@ int maximum2 (int v[], int N, int *m){
 }
 
 //7
+// maneira pouco eficiente, não seguindo a dica
 void quadrados (int q[], int N){
     for(int i=0; i<N; q[i] = i*i, i++);
+}
+
+// resolução eficiente (esta forma é MUITO mais eficiente para o compilador porque não faz multiplicações, apenas somas)
+void quadrados2 (int q[], int N){
+    int i;
+    if(N>0){
+        q[0] = 0;
+        int impar = 1;
+        for(i; i<N; i++, impar +=2)
+            // (a + 1)^2 = a^2 + 2*a*1 + 1^2 -> a^2 + (2*a + 1)
+            // 2*a + 1 -> 2*(i-1) + 1 -> 2 * i - 1, i = a + 1 logo quando queremos apenas a = i - 1 
+            q[i] = q[i-1] + impar ; // 2*i -1 significa um número impar q[i] = q[i-1] + 2 * i - 1;
+    }
 }
 
 //8

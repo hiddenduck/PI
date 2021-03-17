@@ -143,7 +143,7 @@ void quadrados2 (int q[], int N){
 void pascal (int v[], int N){
     int tabela[N][N], i, j;
     for(i=0; i<N; i++){
-        for(int j=0; j<N; j++){
+        for(j=0; j<N; j++){
             if(i == 0 || j == 0)
                 tabela[i][j] = 1;
             else
@@ -155,4 +155,4 @@ void pascal (int v[], int N){
         v[j] = tabela[i][j];
         i--; j++; N--;
     } 
-}    
+}

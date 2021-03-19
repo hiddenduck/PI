@@ -156,3 +156,30 @@ void pascal (int v[], int N){
         i--; j++; N--;
     } 
 }
+
+// ou (melhor)
+void pascal2 (int v[], int N){
+    for(int i=0; i<N; i++){
+        v[i] = 1;
+        for(int j=i-1; j>0; j--){
+            v[j] += v[j-1];
+        }
+    }
+}
+
+//b)
+void desenhaPascal (int N){
+    int v[N], n=N;
+    for(int i=0; i<N; i++){
+        v[i] = 1;
+        for(int l=n; l > 0; l--)
+            putchar(' ');
+        n -=1;
+        printf("%d ", v[i]);
+        for(int j=i-1; j>=0; j--){
+            v[j] += v[j-1];
+            printf("%d ", v[j]);
+        }
+        putchar('\n');
+    }
+}

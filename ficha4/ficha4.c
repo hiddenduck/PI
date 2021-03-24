@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// 1 - Funções sobre strings
 //1
 int isVowel (char c){
     int r=0;
@@ -60,21 +61,36 @@ int retiraVogaisRep2 (char *s){
 
 //3
 int duplicaVogais (char *s){
+    int nVogais = contaVogais(s);
+    char aux[strlen(s)+nVogais];
+    int r, w;
 
+    for(r=0, w=0; s[r]!='\0'; r++){
+        aux[w++] = s[r];
+        if(isVowel(s[r])) // isVowel do 1º exercício
+            aux[w++] = s[r];
+    }
+
+    aux[w] = '\0';
+    strcpy(s, aux);
+    return (nVogais);
 }
 
-int main(){   
-    char s1 [100] = "Estaa e umaa string coom duuuplicadoos";
-    int x;
-    
-    printf ("Testes\n");
-    printf ("A string \"%s\" tem %d vogais\n", s1, contaVogais (s1));
-    
-    x = retiraVogaisRep (s1);
-    printf ("Foram retiradas %d vogais, resultando em \"%s\"\n", x, s1);
-    
-    //x = duplicaVogais (s1);
-    //printf ("Foram acrescentadas %d vogais, resultando em \"%s\"\n", x, s1);
+int duplicaVogais2 (char *s){
+    int nVogais = contaVogais(s);
 
-    return 0;
+    int r = strlen(s)-1;
+    int w = r + nVogais;
+    s[w+1] = '\0';
+
+    while(r>=0){
+        s[w--] = s[r--];
+        if(isVowel(s[r])) // isVowel do 1º exercício
+            s[w--]=s[r];
+    }
+
+    return nVogais;
 }
+
+// 2 - Arrays ordenados
+//1

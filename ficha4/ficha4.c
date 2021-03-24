@@ -31,6 +31,38 @@ int contaVogais (char *s){
     return soma;
 }
 
+//2
+int retiraVogaisRep (char *s){
+    char aux[strlen(s)];
+    int r,w;
+
+    for(r=0, w=0; s[r]!='\0'; r++){
+        if(s[r]!=s[r+1] || !(isVowel(s[r]))) // isVowel do 1º exercício
+            aux[w++] = s[r];
+    }
+
+    aux[w] = '\0';
+    strcpy(s, aux);
+    return (r-w);
+}
+
+int retiraVogaisRep2 (char *s){
+    int r,w;
+
+    for(r=0, w=0; s[r]!='\0'; r++){
+        if(s[r]!=s[r+1] || !(isVowel(s[r]))) // isVowel do 1º exercício
+            s[w++] = s[r];
+    }
+
+    s[w] = '\0';
+    return (r-w);
+}
+
+//3
+int duplicaVogais (char *s){
+
+}
+
 int main(){   
     char s1 [100] = "Estaa e umaa string coom duuuplicadoos";
     int x;
@@ -38,8 +70,8 @@ int main(){
     printf ("Testes\n");
     printf ("A string \"%s\" tem %d vogais\n", s1, contaVogais (s1));
     
-    //x = retiraVogaisRep (s1);
-    //printf ("Foram retiradas %d vogais, resultando em \"%s\"\n", x, s1);
+    x = retiraVogaisRep (s1);
+    printf ("Foram retiradas %d vogais, resultando em \"%s\"\n", x, s1);
     
     //x = duplicaVogais (s1);
     //printf ("Foram acrescentadas %d vogais, resultando em \"%s\"\n", x, s1);

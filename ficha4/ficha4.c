@@ -102,3 +102,22 @@ int ordenado (int a[], int N){
 
     return r;
 }
+
+//2
+void merge (int a[], int na, int b[], int nb, int r[]){
+  int i=0, j=0, w=0;
+
+  while(i<na && j<nb){
+    if(a[i]<b[j])
+      r[w++] = a[i++];
+    else
+      r[w++] = b[j++]; 
+  }
+
+  while(i<na)
+    r[w++] = a[i++];
+  while(j<nb)
+    r[w++] = b[j++];
+}
+
+//3

@@ -125,9 +125,9 @@ int partition (int v[], int N, int x){
     int r, i, j, aux[N];
 
 	for(r=i=0, j=N-1; i<N; i++){
-		if(v[i] <= x)
+	  if(v[i] <= x)
             aux[r++] = v[i];
-        else
+          else
             aux[j--] = v[i];
     }
   for(i=0; i<N; i++)
@@ -147,7 +147,7 @@ int partition2 (int v[], int N, int x){
 	int r, i;
 
 	for(r=i=0; i<N; i++)
-		if(v[i] <= x) 
+	  if(v[i] <= x) 
             swap (v, r++, i);
 
 	return r;

@@ -53,6 +53,7 @@ int bitsUm (unsigned int x){
             r++;
     x /= 2;
     }
+
     return r;
 }
 
@@ -75,6 +76,7 @@ int qDig (int n) {
         r++;
         n /= 10;
     }
+
     return r;
 }
 
@@ -82,6 +84,7 @@ int qDig (int n) {
 char comprimento(char s1[]){
     int i;
     for(i=0; s1[i] != '\0'; i++);
+
     return i;
 }
 
@@ -91,6 +94,7 @@ char *mystrcat(char s1[], char s2[]){
         i;
     for(i=0; i<l2; i++) s1[l1+i] = s2[i];
     s1[l1+i] = '\0';
+
     return s1;
 }
 
@@ -99,7 +103,9 @@ char *mystrcpy(char *dest, char source[]) {
     int i;
     for(i=0; source[i]!='\0'; i++)
         dest[i] = source[i];
+
     dest[i] = '\0';
+
     return dest;
 }
 
@@ -124,6 +130,7 @@ char *mystrstr (char s1[], char s2[]) {
     }
 
     if(s2[0]=='\0') r = s1;
+
     return r;
 }
 
@@ -150,6 +157,7 @@ int isVowel (char c){
         if(vogais[i] == c)
             r = 1;
     }
+
     return r;
 }
 
@@ -178,6 +186,7 @@ char charMaisfreq (char s[]){
                 contaChar = s[i];
             }
     }
+
     return contaChar;
 }
 
@@ -192,6 +201,7 @@ int iguaisConsecutivos (char s[]){
         if(contaVezesMax < contaVezes)
                  contaVezesMax = contaVezes;
     }
+
     return contaVezesMax;
 }
 
@@ -204,6 +214,7 @@ int compPrefixoSemRep (char s[]){
         if (j!=i) return r;
         else r++;
     }
+
     return r;
 }
 
@@ -213,6 +224,7 @@ int difConsecutivos (char s[]){
         t = compPrefixoSemRep(s+i);
         if (t > r) r=t;
     }
+
     return r;
 }
 
@@ -251,6 +263,7 @@ int isVowel1 (char c){
         if(vogais[i] == c)
             r = 1;
     }
+
     return r;
 }
 
@@ -272,6 +285,7 @@ int palindorome (char s[]){
         if(s[i]!=s[j])
             r = 0;
     }
+
     return r;
 }
 
@@ -282,7 +296,9 @@ int remRep (char x[]){
         if(x[i]!=x[i+1])
             x[j++] = x[i];
     }
+
     x[j] = '\0';
+
     return j;
 }
 
@@ -299,6 +315,18 @@ int limpaEspacos (char texto[]) {
     return j;
 }
 
+//28
+int crescente (int a[], int i, int j){
+    int m, r=1;
+
+    for(m=i; m<j && r==1; m++){
+        if(a[m] > a[m+1])
+            r=0;
+    }
+
+    return r;
+}
+
 //29
 int retiraNeg (int v[], int N){
     int i, j;
@@ -307,6 +335,7 @@ int retiraNeg (int v[], int N){
         if(v[i]>=0)
             v[j++] = v[i];
     }
+
     return j;
 }
 
@@ -325,6 +354,17 @@ int elimRepOrd (int v[], int N){
     return e;
 }
 
+//37
+int minInd (int v[], int n){
+    int i, indice=0;
+    for(i=1; i<n; i++){
+        if(v[i]<v[indice])
+            indice = i;
+    }
+
+    return indice;
+}
+
 //38
 int somasAcAux(int v[], int acc){
     int r = 0;
@@ -332,6 +372,7 @@ int somasAcAux(int v[], int acc){
         r += v[acc];
         acc--;
     }
+
     return r;
 }
 
@@ -341,4 +382,6 @@ void somasAc (int v[], int Ac [], int N){
         Ac[i] = somasAcAux(v, acc);
     }
 }
+
+
 

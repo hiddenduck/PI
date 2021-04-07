@@ -128,7 +128,7 @@ char *mystrstr (char s1[], char s2[]) {
 }
 
 //11
-void swap(char* s, int x, int y){
+void swapChars(char* s, int x, int y){
     int t = s[x];
     s[x] = s[y];
     s[y] = t;
@@ -138,7 +138,7 @@ void mystrrev (char s[]){
     int i, tamanho;
     for(tamanho=0; s[tamanho]; tamanho++);
     for(i=0, tamanho--; i<tamanho/2; i++, tamanho--){
-        swap(s, i, tamanho);
+        swapChars(s, i, tamanho);
     }
 }
 
@@ -162,25 +162,6 @@ void strnoV (char s[]){
     }
     s[j] = '\0';
 }
-
-//13
-/*
-void truncW (char t[], int n){
-   int i, j, contaN = n;
-
-   for(i=0, j=0; t[i]!='\0'; i++){
-       if(t[i]!=' '){
-           if(contaN > 0){
-           t[j++] = t[i];
-           contaN--;
-           }
-       }else{
-           t[j++] = t[i];
-           contaN = n;
-       }
-   }
-} 
-*/
 
 //14
 char charMaisfreq (char s[]){
@@ -249,6 +230,86 @@ int maiorPrefixo (char s1 [], char s2 []){
     return contador;
 }
 
+//20
+int contaPal (char s[]){
+    int i, j, contador=0, r;
+    
+    for(i=0; s[i]!='\0'; i++){
+        if((s[i] != ' ' && s[i]!='\n') && s[i+1] == ' ' || (s[i] != ' ' && s[i]!='\n') && s[i+1] == '\0'){
+            contador++;
+        }       
+    }
+        
+    return contador;
+}
+
+//21
+int isVowel1 (char c){
+    int r = 0;
+    char vogais[11] = "aeiouAEIOU";
+    for(int i=0; vogais[i]!='\0' && r==0; i++){
+        if(vogais[i] == c)
+            r = 1;
+    }
+    return r;
+}
+
+int contaVogais (char s[]){
+    int i, contador=0;
+    
+    for(i=0; s[i]!='\0'; i++){
+        if(isVowel1(s[i]))
+            contador++;
+    }
+
+    return contador;
+}
+
+//23
+int palindorome (char s[]){
+    int i, j = strlen(s)-1, r=1;
+    for(i=0; s[i]!='\0' && r==1; i++, j--){
+        if(s[i]!=s[j])
+            r = 0;
+    }
+    return r;
+}
+
+//24
+int remRep (char x[]){
+    int i, j;
+    for(i=0, j=0; x[i]!='\0'; i++){
+        if(x[i]!=x[i+1])
+            x[j++] = x[i];
+    }
+    x[j] = '\0';
+    return j;
+}
+
+//25
+int limpaEspacos (char texto[]) {
+    int i, j;
+    
+    for(i=0, j=0; texto[i]!='\0'; i++){
+        if(texto[i]!=' ' || texto[i+1]!=' ')
+            texto[j++] = texto[i];
+    }
+    texto[j] = '\0';
+    
+    return j;
+}
+
+//29
+int retiraNeg (int v[], int N){
+    int i, j;
+
+    for(i=0, j=0; i<N; i++){
+        if(v[i]>=0)
+            v[j++] = v[i];
+    }
+    return j;
+}
+
 //34
 int elimRepOrd (int v[], int N){
     int e = 0, l;
@@ -263,3 +324,21 @@ int elimRepOrd (int v[], int N){
 
     return e;
 }
+
+//38
+int somasAcAux(int v[], int acc){
+    int r = 0;
+    while(acc >= 0){
+        r += v[acc];
+        acc--;
+    }
+    return r;
+}
+
+void somasAc (int v[], int Ac [], int N){
+    int acc = 0, i;
+    for(i=0; i < N; i++, acc++){
+        Ac[i] = somasAcAux(v, acc);
+    }
+}
+

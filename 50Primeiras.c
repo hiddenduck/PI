@@ -93,3 +93,173 @@ char *mystrcat(char s1[], char s2[]){
     s1[l1+i] = '\0';
     return s1;
 }
+
+//8
+char *mystrcpy(char *dest, char source[]) {
+    int i;
+    for(i=0; source[i]!='\0'; i++)
+        dest[i] = source[i];
+    dest[i] = '\0';
+    return dest;
+}
+
+//9
+int mystrcmp (char s1[], char s2[]){
+    int i;
+
+    for(i=0; s1[i]!='\0' && s1[i]==s2[i]; i++);
+
+    return s1[i]-s2[i];
+}
+
+//10
+char *mystrstr (char s1[], char s2[]) {
+    int i,j, k;
+    char *r = NULL;
+
+    for(i=0; s1[i]!='\0' && r==NULL; i++){
+        for(j=0, k=i; s2[j]!='\0' && s1[k]==s2[j]; j++, k++);
+
+        if(s2[j]=='\0') r = s1 + i;
+    }
+
+    if(s2[0]=='\0') r = s1;
+    return r;
+}
+
+//11
+void swap(char* s, int x, int y){
+    int t = s[x];
+    s[x] = s[y];
+    s[y] = t;
+}
+
+void mystrrev (char s[]){
+    int i, tamanho;
+    for(tamanho=0; s[tamanho]; tamanho++);
+    for(i=0, tamanho--; i<tamanho/2; i++, tamanho--){
+        swap(s, i, tamanho);
+    }
+}
+
+//12
+int isVowel (char c){
+    int r = 0;
+    char vogais[11] = "aeiouAEIOU";
+    for(int i=0; vogais[i]!='\0' && r==0; i++){
+        if(vogais[i] == c)
+            r = 1;
+    }
+    return r;
+}
+
+void strnoV (char s[]){
+    int i, j;
+
+    for(i=0, j=0; s[i]!='\0'; i++){
+        if(!(isVowel(s[i])))
+           s[j++] = s[i];
+    }
+    s[j] = '\0';
+}
+
+//13
+/*
+void truncW (char t[], int n){
+   int i, j, contaN = n;
+
+   for(i=0, j=0; t[i]!='\0'; i++){
+       if(t[i]!=' '){
+           if(contaN > 0){
+           t[j++] = t[i];
+           contaN--;
+           }
+       }else{
+           t[j++] = t[i];
+           contaN = n;
+       }
+   }
+} 
+*/
+
+//14
+char charMaisfreq (char s[]){
+    int i, j , contaVezesMax = 0;
+    char contaChar;
+
+    for(i=0; s[i]!='\0'; i++){
+        int contaVezes=0;
+        for(j=0; s[j]!='\0'; j++){
+            if(s[i]==s[j]) contaVezes++;
+        }
+        if(contaVezesMax < contaVezes){
+                 contaVezesMax = contaVezes;
+                contaChar = s[i];
+            }
+    }
+    return contaChar;
+}
+
+//15
+int iguaisConsecutivos (char s[]){
+    int i, j, contaVezesMax = 0;
+
+    for(i=0; s[i]!='\0'; i++){
+        int contaVezes=0;
+        for(j=i; s[j]!='\0' && s[i]==s[j]; j++)
+            contaVezes++;    
+        if(contaVezesMax < contaVezes)
+                 contaVezesMax = contaVezes;
+    }
+    return contaVezesMax;
+}
+
+//16
+int compPrefixoSemRep (char s[]){
+    int i, j, r=0;
+    for(i=0; s[i]!='\0'; i++){
+        for(j=0; s[j]!=s[i]; j++);
+
+        if (j!=i) return r;
+        else r++;
+    }
+    return r;
+}
+
+int difConsecutivos (char s[]){
+    int r=0, t, i;
+    for(i=0; s[i]!='\0'; i++){
+        t = compPrefixoSemRep(s+i);
+        if (t > r) r=t;
+    }
+    return r;
+}
+
+//17
+int maiorPrefixo (char s1 [], char s2 []){
+    int i, contador = 0, r=0;
+
+    for(i=0; s1[i]!='\0' && s2[i]!='\0' && r==0; i++){
+        if(s1[i]!=s2[i])
+           r=1;
+        else
+            contador++;
+    }
+
+    return contador;
+}
+
+//34
+int elimRepOrd (int v[], int N){
+    int e = 0, l;
+    for(l=1; l<N; l++){
+        if(v[l]!=v[e]){
+            e++;
+            v[e] = v[l];
+        }
+    }
+
+    if(N>0) e++;
+
+    return e;
+}

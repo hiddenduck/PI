@@ -293,7 +293,6 @@ int maiorSufixo (char s1 [], char s2 []){
     return contador;
 }
 
-
 //19
 int sufPref (char s1[], char s2[]) {
     int i, j;
@@ -339,6 +338,22 @@ int contaVogais (char s[]){
     }
 
     return contador;
+}
+
+//22
+int contida (char a[], char b[]){
+    int i, j, flagI=1, flagJ=0;
+
+    for(i=0; a[i]!='\0' && flagI==1; i++){
+        for(j=0; b[j]!='\0'&& flagJ==0; j++){
+            if(a[i]==b[j])
+                flagJ=1;
+        }
+        if(flagJ==0)
+            flagI = 0;
+        flagJ = 0;
+    }
+    return flagI;
 }
 
 //23
@@ -450,6 +465,16 @@ int elimRepOrd (int v[], int N){
     return e;
 }
 
+
+//36
+/*
+(8) (8,8,8,8,8,8) -> 1
+(8,8,8,8) (8) -> 4
+int comuns (int a[], int na, int b[], int nb){
+
+}
+*/
+
 //37
 int minInd (int v[], int n){
     int i, indice=0;
@@ -500,11 +525,4 @@ int intersectMSet (int N, int v1[N], int v2[N], int r[N]){
         r[i] = (v1[i]<v2[i]) ? v1[i] : v2[i]; //if (v1[i]<v2[i]) r[i] = v1[i]; else r[i] = v2[i];
 
     return c;
-}
-
-int main(){
-    char s[] = "batota";
-    char v[] = "totalidade"
-    contaPal(s);
-    return 0;
 }

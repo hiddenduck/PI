@@ -450,6 +450,18 @@ int retiraNeg (int v[], int N){
     return j;
 }
 
+//32
+int maxCresc (int v[], int N){
+    int i, j, max=1;
+
+    for(i=1, j=1; i<N; i++){
+        j = v[i-1]>v[i] ? 1 : j+1; 
+        if(j>max) max = j;
+    }
+
+    return max;
+}
+
 //34
 int elimRepOrd (int v[], int N){
     int e = 0, l;

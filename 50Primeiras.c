@@ -191,20 +191,35 @@ void truncW (char t[], int n){
 //14
 char charMaisfreq (char s[]){
     int i, j , contaVezesMax = 0;
-    char contaChar;
+    char contaChar=0;
 
     for(i=0; s[i]!='\0'; i++){
         int contaVezes=0;
         for(j=0; s[j]!='\0'; j++){
             if(s[i]==s[j]) contaVezes++;
         }
-        if(contaVezesMax < contaVezes){
+        if(contaVezes > contaVezesMax){
                  contaVezesMax = contaVezes;
                 contaChar = s[i];
             }
     }
 
     return contaChar;
+}
+
+// solução que precisa de mais memória porém eficiente
+char charMaisfreq2 (char s[]){
+    int contadores[128] = {0};
+    int i;
+    char r;
+    for(i=0; s[i]!='\0'; i++)
+        contadores [s[i]]++;
+
+    r=0;
+    for(i=0; i<128; i++)
+        if(contadores[i] > contadores[r]) r = i;
+
+    return r;
 }
 
 //15
@@ -257,6 +272,37 @@ int maiorPrefixo (char s1 [], char s2 []){
     }
 
     return contador;
+}
+
+//18
+int maiorSufixo (char s1 [], char s2 []){
+    int i, j, contador=0, r=0;
+
+    for(i=0; s1[i]!='\0'; i++); i--; // strlen()
+    for(j=0; s2[j]!='\0'; j++); j--; // strlen()
+
+    while(i>=0 && j>=0 && r==0){
+        if(s1[i]!=s2[j])
+            r=1;
+        else{
+            i--; j--;
+            contador++;
+        }  
+    }
+
+    return contador;
+}
+
+
+//19
+int sufPref (char s1[], char s2[]) {
+    int i, j;
+
+    for(i=0, j=0; s1[i]!='\0'; i++){
+        j = (s1[i]==s2[j]) ? j+1 : 0;
+    }    
+
+    return j;
 }
 
 //20
@@ -431,4 +477,34 @@ void somasAc (int v[], int Ac [], int N){
     for(i=0; i < N; i++, acc++){
         Ac[i] = somasAcAux(v, acc);
     }
+}
+
+//43
+int intersectSet (int N, int v1[N], int v2[N], int r[N]){
+    int c=0, i;
+
+    for(i=0; i<N; i++)
+        if (v1[i] == v2[i]) 
+            r[i] = v1[i];
+        else
+            r[i] = 0;
+
+    return c;
+}
+
+//44
+int intersectMSet (int N, int v1[N], int v2[N], int r[N]){
+    int c = 0, i;
+
+    for(i=0; i<N; i++)
+        r[i] = (v1[i]<v2[i]) ? v1[i] : v2[i]; //if (v1[i]<v2[i]) r[i] = v1[i]; else r[i] = v2[i];
+
+    return c;
+}
+
+int main(){
+    char s[] = "batota";
+    char v[] = "totalidade"
+    contaPal(s);
+    return 0;
 }

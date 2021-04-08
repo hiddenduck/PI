@@ -171,6 +171,23 @@ void strnoV (char s[]){
     s[j] = '\0';
 }
 
+//13
+void truncW (char t[], int n){
+    int i, contador=n, j;
+    
+    for(i=0, j=0; t[i]!='\0'; i++){
+        if(t[i]==' '){
+            t[j++] = t[i];
+            contador=n;
+        }else{
+            if(contador-- > 0)
+                t[j++] = t[i];
+        }
+    }
+
+    t[j] = '\0';
+}
+
 //14
 char charMaisfreq (char s[]){
     int i, j , contaVezesMax = 0;
@@ -315,6 +332,39 @@ int limpaEspacos (char texto[]) {
     return j;
 }
 
+//26
+void insere (int v[], int N, int x){
+    int i, j, flag=0;
+
+    for(i=0; i<N && flag==0; i++){
+        if(x <= v[i]){
+            v[N+1] = v[N];
+            for(j=N; j>i; j--){
+                v[j] = v[j-1];
+            }
+            v[i] = x;
+            flag = 1;
+        }
+    }
+}
+
+//27
+void merge (int r [], int a[], int b[], int na, int nb){
+    int i=0,j=0, w=0;
+
+    while(i<na && j<nb){
+        if(a[i] < b[j])
+            r[w++] = a[i++];
+        else
+            r[w++] = b[j++];
+    }
+    while(i<na)
+      r[w++] = a[i++];
+    while(j<nb)
+      r[w++] = b[j++];
+
+}
+
 //28
 int crescente (int a[], int i, int j){
     int m, r=1;
@@ -382,6 +432,3 @@ void somasAc (int v[], int Ac [], int N){
         Ac[i] = somasAcAux(v, acc);
     }
 }
-
-
-

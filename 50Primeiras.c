@@ -465,15 +465,41 @@ int elimRepOrd (int v[], int N){
     return e;
 }
 
+//35
+int comunsOrd (int a[], int na, int b[], int nb){
+    int i=0, j=0, contador=0;
+
+    while(i<na && j<nb){
+        if(a[i]>b[j])
+            j++;
+        else if(a[i]<b[j])
+            i++;
+        else{
+            i++;
+            j++;
+            contador++;
+        }
+    }
+
+    return contador;
+}
 
 //36
-/*
-(8) (8,8,8,8,8,8) -> 1
-(8,8,8,8) (8) -> 4
 int comuns (int a[], int na, int b[], int nb){
+    int i, j, contador=0, flag=0;
 
+    for(i=0; i<na; i++){
+        for(j=0; j<nb && flag==0; j++){
+            if(a[i]==b[j]){
+                flag=1;
+                contador++;
+            }
+        }
+        flag=0;
+    }
+    
+    return contador;
 }
-*/
 
 //37
 int minInd (int v[], int n){
@@ -499,7 +525,7 @@ int somasAcAux(int v[], int acc){
 
 void somasAc (int v[], int Ac [], int N){
     int acc = 0, i;
-    for(i=0; i < N; i++, acc++){
+    for(i=0; i<N; i++, acc++){
         Ac[i] = somasAcAux(v, acc);
     }
 }

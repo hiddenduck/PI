@@ -94,8 +94,6 @@ int bubbleInd(Aluno t [], int N, int ind[]){
 
 }
 
-
-
 void criaIndPorNum (Aluno t [], int N, int ind[]){
 
   int i;

@@ -109,7 +109,6 @@ void criaIndPorNum (Aluno t [], int N, int ind[]){
 //5
 void imprimeTurmaInd (int ind[], Aluno t[], int N){
     int i;
-    
     for (i=0; i<7; imprimeAluno (t + ind[i++]));
     
 }

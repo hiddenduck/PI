@@ -51,3 +51,23 @@ int Stop (SStack s, int *x){
 
     return r;
 }
+
+//2
+typedef struct staticQueue {
+    int front;
+    int length;
+    int values [Max];
+} QUEUE, *SQueue;
+
+//a)
+void SinitQueue (SQueue q){
+    q->length = 0;
+    q->front = 0;
+}
+
+//b)
+int SisEmptyQ (SQueue q){
+    return (q->length==0);
+}
+
+//c)

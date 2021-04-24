@@ -450,6 +450,52 @@ int retiraNeg (int v[], int N){
     return j;
 }
 
+//30
+int menosFreq (int v[], int N){
+    int i, j, min=N+1, valor=v[0];
+
+    for(i=1, j=1; i<N; i++){
+        if(v[i]!=v[i-1]){
+            if(j < min){
+                min = j;
+                valor = v[i-1];
+            }
+            j = 1;
+        }else
+            j++;
+    }
+
+    if(j < min){
+        min = j;
+        valor = v[i-1];
+    }
+
+    return valor;
+}
+
+//31
+int maisFreq (int v[], int N){
+    int i, j, max=1, valor=v[0];
+
+    for(i=1, j=1; i<N; i++){
+        if(v[i]!=v[i-1]){
+            if(j > max){
+                max = j;
+                valor = v[i-1];
+            }
+            j = 1;
+        }else
+            j++;
+    }
+
+    if(j > max){
+        max = j;
+        valor = v[i-1];
+    }
+
+    return valor;
+}
+
 //32
 int maxCresc (int v[], int N){
     int i, j, max=1;

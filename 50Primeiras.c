@@ -508,6 +508,24 @@ int maxCresc (int v[], int N){
     return max;
 }
 
+//33
+int elimRep (int v[], int n){
+    int i, j, k;
+    for(i=0; i<n; i++){
+        j=i+1;
+        while(j<n){
+            if(v[i]==v[j]){
+                for(k=j; k<n; k++)
+                    v[k] = v[k+1];
+                n--;
+            }else
+                j++;
+        }
+    }
+    
+    return n;
+}  
+
 //34
 int elimRepOrd (int v[], int N){
     int e = 0, l;
@@ -610,3 +628,64 @@ int intersectMSet (int N, int v1[N], int v2[N], int r[N]){
 
     return c;
 }
+
+//47
+typedef struct posicao {
+    int x, y;
+} Posicao;
+typedef enum movimento {Norte, Oeste, Sul, Este} Movimento;
+
+Posicao posFinal (Posicao inicial, Movimento *mov, int N){
+    int i;
+    for(i=0; i<N; i++){
+        switch (mov[i]){
+        case Norte:
+            inicial.y++; 
+            break;
+        case Oeste:
+            inicial.x--;
+            break;
+        case Este:
+            inicial.x++;
+            break;
+        case Sul:
+            inicial.y--;
+            break;
+    }
+    }
+    return inicial;
+}
+
+//49
+int distanciaComAbs(Posicao *p1, Posicao *p2){
+    return (abs(p1->x-p2->x)+abs(p1->y-p2->y));
+}
+
+int maisCentral (Posicao pos[], int N){
+    Posicao origem = {0,0};
+    Posicao maisProxima = pos[0];
+    int i, indice=0;
+    for(i=1; i<N; i++){
+        if(distanciaComAbs(&pos[i], &origem) < distanciaComAbs(&pos[i-1], &origem)){
+            indice = i;
+            maisProxima = pos[i];
+        }
+    }
+
+    return indice;
+}
+
+//50
+int distanciaIgualA1(Posicao *p1, Posicao *p2){
+    return ((abs(p1->x-p2->x)+abs(p1->y-p2->y))==1);
+}
+
+int vizinhos (Posicao p, Posicao pos[], int N){
+    int cont = 0, i;
+    for(i=0; i<N; i++){
+        if(distanciaIgualA1(&p, &pos[i]))
+            cont++;
+    }
+
+    return cont;
+}   

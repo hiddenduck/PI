@@ -91,10 +91,9 @@ int bubbleInd(Aluno t [], int N, int ind[]){
     }
 
   return maxIndTroca;
-
 }
 
-void criaIndPorNum (Aluno t [], int N, int ind[]){
+void criaIndPorNum2 (Aluno t [], int N, int ind[]){
 
   int i;
   for(i=0; i<N; i++)

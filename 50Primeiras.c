@@ -718,7 +718,29 @@ Posicao posFinal (Posicao inicial, Movimento *mov, int N){
 }
 
 //48
+int caminho (Posicao inicial, Posicao final, Movimento mov[], int N){
+    int i;
+    for(i=0; i<N; i++){
+        if(inicial.x < final.x){
+            inicial.x++;
+            mov[i] = Este;
+        }else if(inicial.x > final.x){
+            inicial.x--;
+            mov[i] = Oeste;
+        }else if(inicial.y < final.y){
+            inicial.y++;
+            mov[i] = Norte;
+        }else if(inicial.y > final.y){
+            inicial.y--;
+            mov[i] = Sul;
+        }else
+            return i;
+    }
 
+    if(inicial.x != final.x || inicial.y != final.y)
+        i = -1;
+    return i;
+}
 
 //49
 int distanciaComAbs(Posicao *p1, Posicao *p2){

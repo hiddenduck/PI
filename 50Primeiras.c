@@ -672,7 +672,13 @@ int intersectMSet (int N, int v1[N], int v2[N], int r[N]){
 }
 
 //45
-
+int unionMSet (int N, int v1[N], int v2[N], int r[N]) {
+    int c = 0, i;
+    for(i = 0; i < N; i++)
+        r[i] = (v1[i]<v2[i]) ? v2[i] : v1[i];
+    
+    return c;
+}
 
 
 //46
@@ -712,11 +718,7 @@ Posicao posFinal (Posicao inicial, Movimento *mov, int N){
 }
 
 //48
-int caminho (Posicao inicial, Posicao final, Movimento mov[], int N){
 
-
-    return 0;
-}
 
 //49
 int distanciaComAbs(Posicao *p1, Posicao *p2){
@@ -751,3 +753,4 @@ int vizinhos (Posicao p, Posicao pos[], int N){
 
     return cont;
 }
+

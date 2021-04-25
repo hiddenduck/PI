@@ -606,6 +606,48 @@ void somasAc (int v[], int Ac [], int N){
     }
 }
 
+//39
+int triSup (int N, float m[N][N]){
+    int cont, i, j, flag=1;
+    for(i=0; i<N && flag==1; i++){
+        cont = i;
+        for(j=0; i<N && cont!=0; j++, cont--)
+            if(m[i][j]!=0)
+                flag=0;  
+    }
+    return flag;
+}
+
+//40
+void transposta (int N, float m[N][N]){
+    int i, j;
+    for(i=0; i<N; i++){
+        for(j=0; j<i; j++){
+            float temp = m[i][j];
+            m[i][j] = m[j][i];
+            m[j][i] = temp;
+        }
+    }
+}
+
+//41
+void addTo (int N, int M, int a [N][M], int b[N][M]){
+    int i, j;
+    for(i=0; i<N; i++)
+        for(j=0; j<M; j++)
+            a[i][j] += b[i][j];
+}
+
+//42
+int unionSet (int N, int v1[N], int v2[N], int r[N]){
+    int c=0, i;
+
+    for(i=0; i<N; i++)
+        r[i] = v1[i]<v2[i] ? v2[i] : v1[i];
+    
+    return c;
+}
+
 //43
 int intersectSet (int N, int v1[N], int v2[N], int r[N]){
     int c=0, i;
@@ -627,6 +669,19 @@ int intersectMSet (int N, int v1[N], int v2[N], int r[N]){
         r[i] = (v1[i]<v2[i]) ? v1[i] : v2[i]; //if (v1[i]<v2[i]) r[i] = v1[i]; else r[i] = v2[i];
 
     return c;
+}
+
+//45
+
+
+
+//46
+int cardinalMSet (int N, int v[N]){
+    int i, soma=0;
+    for(i=0; i<N; i++)
+        if(v[i]!=0)
+            soma += v[i];
+    return soma;
 }
 
 //47
@@ -654,6 +709,13 @@ Posicao posFinal (Posicao inicial, Movimento *mov, int N){
     }
     }
     return inicial;
+}
+
+//48
+int caminho (Posicao inicial, Posicao final, Movimento mov[], int N){
+
+
+    return 0;
 }
 
 //49
@@ -688,4 +750,4 @@ int vizinhos (Posicao p, Posicao pos[], int N){
     }
 
     return cont;
-}   
+}

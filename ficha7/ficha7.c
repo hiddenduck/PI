@@ -39,7 +39,7 @@ int quantasP (Palavras l){
 //3
 void listaPal (Palavras l){
     while(l != NULL){
-        printf("A palavra %s tem %d ocorrências.\n", l->palavra, l->ocorr);
+        printf("A palavra %s tem %d ocorrencias.\n", l->palavra, l->ocorr);
         l = l->prox;
     }
 }
@@ -72,7 +72,7 @@ Palavras acrescentaFim (Palavras l, char *p){
     if(l == NULL)
         inicio = nova;
     else{
-        while(l != NULL)
+        while(l->prox != NULL)
             l = l->prox;
         l->prox = nova;
     }

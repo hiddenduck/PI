@@ -111,6 +111,30 @@ Palavras acrescentaNoFim (Palavras l, char *p){
     return inicio;
 }
 
+Palavras acrescentaPorOrdemAlfabetica (Palavras l, char *p){
+    Palavras adiciona = acrescentaInicio(NULL, p);
+    Palavras inicio = l;
+    if(l!=NULL){
+        if(strcmp(l->palavra, p)==0)
+            l->ocorr++;
+        else{
+            while(l->prox != NULL && strcmp(l->prox->palavra, p)<0)
+                l = l->prox;
+            if(l->prox==NULL)
+                l->prox = adiciona;
+            else if(strcmp(l->prox->palavra, p)==0)
+                l->ocorr++;
+            else{
+                adiciona->prox = l->prox;
+                l->prox = adiciona;
+            }
+        }
+    }else
+        inicio = adiciona;
+
+    return inicio;
+}
+
 //8
 struct celula * maisFreq (Palavras l){ // struct celula * == Palavras
     Palavras max = l;
@@ -124,11 +148,11 @@ struct celula * maisFreq (Palavras l){ // struct celula * == Palavras
 }
 
 int main(){
-    Palavras x = acrescentaInicio(NULL, "areia");
-    Palavras y = acrescentaInicio(NULL, "boas");
-    Palavras z = acrescentaInicio(NULL, "zeca");
+    Palavras x = acrescentaInicio(NULL, "aeioi");
+    Palavras y = acrescentaInicio(NULL, "bdasd");
+    Palavras z = acrescentaInicio(NULL, "zfdf");
     x->prox = y;
     y->prox = z;
-    acrescentaPorOrdemAlfabetica(x, "ar");
+    acrescentaPorOrdemAlfabetica(x, "zz");
     listaPal(x);
 }

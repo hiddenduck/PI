@@ -112,7 +112,20 @@ Palavras acrescentaNoFim (Palavras l, char *p){
 }
 
 Palavras acrescentaPorOrdemAlfabetica (Palavras l, char *p){
-    
+    Palavras adiciona = acrescentaInicio(NULL, p);
+    Palavras inicio = l;
+    if(l!=NULL){
+        while(l->prox != NULL && strcmp(l->palavra, p)<0)
+            l = l->prox;
+        if(strcmp(l->palavra, p)==0)
+            l->ocorr++;
+        else{
+            adiciona->prox = l->prox;
+            l->prox = adiciona;
+        }
+    }
+
+    return inicio;
 }
 
 //8

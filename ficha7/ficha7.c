@@ -146,13 +146,3 @@ struct celula * maisFreq (Palavras l){ // struct celula * == Palavras
 
     return max;
 }
-
-int main(){
-    Palavras x = acrescentaInicio(NULL, "aeioi");
-    Palavras y = acrescentaInicio(NULL, "bdasd");
-    Palavras z = acrescentaInicio(NULL, "zfdf");
-    x->prox = y;
-    y->prox = z;
-    acrescentaPorOrdemAlfabetica(x, "zz");
-    listaPal(x);
-}

@@ -23,6 +23,7 @@ void libertaLista (Palavras l){
         l = l->prox;
         free(aux->palavra);
         free(aux);
+        aux = l;
     }
 }
 

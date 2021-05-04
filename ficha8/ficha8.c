@@ -40,11 +40,16 @@ int push (Stack *s, int x){
 int pop (Stack *s, int *x){
     int r = 0;
     if(!SisEmpty(*s)){
+        *x = (*s)->valor;
         LInt temp = *s;
         s = &((*s)->prox);
         free(temp);
     }else
         r = 1;
-        
+
     return r;
+}
+
+int top (Stack s, int *x){
+
 }

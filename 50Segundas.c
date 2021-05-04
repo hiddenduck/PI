@@ -74,6 +74,25 @@ void insertOrd (LInt *l, int x){
 	*l = nova;
 }
 
+//6
+int removeOneOrd (LInt *l, int x){
+    LInt inicio = (*l), ant = *l;
+    int r = 0;
+    while(l != NULL && r==0){
+        if((*l)->valor == x){
+            ant->prox = (*l)->prox;
+            free(*l);
+            r = 1;
+        } 
+        ant = *l;
+        l = &((*l)->prox); 
+    }
+    if(r==1)
+        inicio = 0;
+    
+    return inicio;
+}
+
 //18
 int maximo (LInt l){
     int max = l->valor;

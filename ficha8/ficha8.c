@@ -23,7 +23,7 @@ void initStack (Stack *s){
 }
 
 int SisEmpty (Stack s){
-    return s ? 1 : 0;
+    return s ? 0 : 1;
 }
 
 int push (Stack *s, int x){
@@ -42,7 +42,7 @@ int pop (Stack *s, int *x){
     if(!SisEmpty(*s)){
         *x = (*s)->valor;
         LInt temp = *s;
-        s = &((*s)->prox);
+        *s = (*s)->prox; // s = &((*s)->prox)
         free(temp);
     }else
         r = 1;
@@ -51,5 +51,11 @@ int pop (Stack *s, int *x){
 }
 
 int top (Stack s, int *x){
-
+    int r = 0;
+    if(!SisEmpty(s))
+        *x = s->valor;
+    else
+        r = 1;
+    
+    return r;
 }

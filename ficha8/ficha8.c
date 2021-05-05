@@ -59,3 +59,22 @@ int top (Stack s, int *x){
     
     return r;
 }
+
+//2 Queues
+typedef struct {
+    LInt inicio,
+    fim;
+} Queue;
+
+void initQueue (Queue *q){
+    (*q).inicio = NULL;
+    (*q).fim = NULL;
+}
+
+int QisEmpty (Queue q){
+    return q.inicio && q.fim ? 0 : 1;
+}
+
+int enqueue (Queue *q, int *x){
+    
+}

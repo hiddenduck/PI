@@ -34,7 +34,7 @@ int contaVogais (char *s){
 
 //2
 int retiraVogaisRep (char *s){
-    char aux[strlen(s)];
+    char aux[strlen(s)+1];
     int r,w;
 
     for(r=0, w=0; s[r]!='\0'; r++){
@@ -62,7 +62,7 @@ int retiraVogaisRep2 (char *s){
 //3
 int duplicaVogais (char *s){
     int nVogais = contaVogais(s);
-    char aux[strlen(s)+nVogais];
+    char aux[strlen(s)+nVogais+1];
     int r, w;
 
     for(r=0, w=0; s[r]!='\0'; r++){
@@ -77,19 +77,16 @@ int duplicaVogais (char *s){
 }
 
 int duplicaVogais2 (char *s){
-    int nVogais = contaVogais(s);
-
-    int r = strlen(s)-1;
-    int w = r + nVogais;
-    s[w+1] = '\0';
-
-    while(r>=0){
-        s[w--] = s[r--];
-        if(isVowel(s[r])) // isVowel do 1º exercício
-            s[w--]=s[r];
+    int vogaisrepetidas = contaVogais(s);
+    int i = strlen(s) - 1, j = i + vogaisrepetidas;
+    s[j+1] = '\0'; 
+    while(i>=0){
+        if(isVowel(s[i]))
+            s[j--] = s[i];
+        s[j--] = s[i--];
     }
 
-    return nVogais;
+    return vogaisrepetidas;
 }
 
 // 2 - Arrays ordenados

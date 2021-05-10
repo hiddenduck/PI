@@ -100,3 +100,13 @@ int nivel (ABin a, int x){
     return r;
 }
 
+void imprimeAte (ABin a, int x){
+    if(a!=NULL){
+        if(a->valor<x){
+            imprimeAte(a->esq, x);
+            printf("%d ", a->valor);
+            imprimeAte(a->dir, x);
+        }else
+            imprimeAte(a->esq, x);
+    }
+}

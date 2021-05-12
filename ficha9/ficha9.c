@@ -18,19 +18,25 @@ ABin newABin (int r, ABin e, ABin d){
 }
 
 //1
+int max(int x, int y){
+    return (x>y) ? x : y;
+}
+
 int altura (ABin a){
     int r = 0;
     if(a!=NULL)
-        r = (a->esq > a->dir) ? (1+ altura(a->esq)) : (1 + altura(a->dir));
+        r = 1 + max(altura(a->esq), altura(a->dir));
     return r;
 }
 
 int nFolhas (ABin a){
     int r = 0;
-    if(a!=NULL && a->dir==NULL && a->esq==NULL)
-        r = 1;
-    else if(a!=NULL)
-        r = nFolhas(a->dir) + nFolhas(a->esq);
+    if(a != NULL){
+        if(a->dir == NULL && a->esq == NULL)
+            r = 1;
+        else 
+            r = nFolhas(a->dir) + nFolhas(a->esq);
+        }
     return r;
 }
 
@@ -43,19 +49,27 @@ ABin maisEsquerda(ABin a){
     return r;
 }
 
-ABin maisEsquerda2(ABin a){
+ABin maisEsquerda2(ABin a){ // verificar a != NULL em cada ciclo é desnecessário
     while(a!=NULL && a->esq!=NULL)
         a = a->esq;
     return a;
 }
 
+ABin maisEsquerda3 (ABin a){
+    if(a != NULL)
+        while(a->esq != NULL)
+            a = a->esq;
+    return a;
+}
+
 void imprimeNivel(ABin a, int l){
-    int x = l;
     if(a!=NULL){
         if(l==0)
             printf("%d ", a->valor);
-        imprimeNivel(a->esq, l-1);
-        imprimeNivel(a->dir, l-1);
+        else{
+            imprimeNivel(a->esq, l-1);
+            imprimeNivel(a->dir, l-1);
+        }
     }
 }
 
@@ -71,8 +85,12 @@ int procuraE (ABin a, int x){
     return r;
 }
 
+int procuraE2 (ABin a, int x){
+    return (a!= NULL && (a->valor==x || procuraE2(a->esq, x) || procuraE2(a->dir, x)));
+}
+
 //2 Árvores de procura BST (Binary Search Tree)
-struct nodo *procura (ABin a, int x){
+struct nodo *procuraRecursivo (ABin a, int x){
     ABin n = NULL;
     if(a!=NULL){
         if(a->valor == x)
@@ -86,27 +104,35 @@ struct nodo *procura (ABin a, int x){
     return n;
 }
 
-int nivel (ABin a, int x){
-    int r = 0;
-    if(a!=NULL){
-        if(a->valor != x){
-            if(a->valor > x)
-                r = 1 + nivel(a->esq, x);
-            else
-                r = 1 + nivel(a->dir, x);
-        }
-    }
+struct nodo *procura (ABin a, int x){
+    while(a != NULL && a->valor != x)
+        if(a->valor > x)
+            a = a->esq;
+        else
+            a = a->dir;
 
-    return r;
+    return a;
 }
 
+int nivel (ABin a, int x){
+    int r;
+    for(r=0; a!=NULL && a->valor != x; r++){
+        if(a->valor > x)
+            a = a->esq;
+        else
+            a = a->dir;
+    }
+
+    return (a!=NULL) ? r : -1;
+}
+
+// inorder left -> root -> right
 void imprimeAte (ABin a, int x){
     if(a!=NULL){
+        imprimeAte(a->esq, x);
         if(a->valor<x){
-            imprimeAte(a->esq, x);
             printf("%d ", a->valor);
             imprimeAte(a->dir, x);
-        }else
-            imprimeAte(a->esq, x);
+            }
     }
 }

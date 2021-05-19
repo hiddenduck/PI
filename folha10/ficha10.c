@@ -96,10 +96,6 @@ ABin removeMenor2 (ABin *a){
 }
 
 //3
-int constroiEspinha (ABin *a){
-    return 0;
-}
-
 int controiEspinha2 (ABin *a, ABin *ult){
     int r = 0;
     while(*a!=NULL){

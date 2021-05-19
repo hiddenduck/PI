@@ -384,7 +384,23 @@ LInt rotateL (LInt l){
     return newL;
 }
 
+//27
+LInt parte (LInt l){
+    int i=0;
+    LInt new = NULL, *sitio=&new;
+    while(l!=NULL && l->prox!=NULL){
+        if(new==NULL)
+            new = *sitio = l->prox;
+        else{
+            *sitio = l->prox;
+            l = l->prox = l->prox->prox;
+            (*sitio)->prox = NULL; 
+            sitio = &((*sitio)->prox);
+        }
+    }
 
+    return new;    
+}
 
 // Árvores Binárias
 typedef struct nodo {

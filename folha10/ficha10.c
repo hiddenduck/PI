@@ -96,7 +96,23 @@ ABin removeMenor2 (ABin *a){
 }
 
 //3
-int controiEspinha2 (ABin *a, ABin *ult){
+int constroiEspinhaAux (ABin *a, ABin *ult){
+    int r = 0;
+    if(*a!=NULL){
+        r = constroiEspinhaAux(&((*a)->esq), ult);
+        if((*a)->esq!=NULL)
+            rodaDireita(a);
+        r = r + 1 + constroiEspinhaAux(&((*a)->dir), ult);
+    }
+
+    return r;
+}
+
+int constroiEspinha (ABin *a){
+    return (constroiEspinhaAux(a, NULL));
+}
+
+int controiEspinha2 (ABin *a){
     int r = 0;
     while(*a!=NULL){
         promoveMenor(a);

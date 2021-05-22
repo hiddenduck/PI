@@ -517,8 +517,32 @@ int iguaisAB (ABin a, ABin b){
             r = r && iguaisAB(a->dir, b->dir);
         }
     }
-
+    
     return r;
+}
+
+//38
+LInt nivelL (ABin a, int n){
+    LInt new = NULL, esq, dir;
+    if(a!=NULL && n>=1){
+        if(n==1){
+            new = malloc(sizeof(struct lligada));
+            new->valor = a->valor;
+            new->prox = NULL;
+        }else{
+            esq = nivelL(a->esq, n-1);
+            dir = nivelL(a->dir, n-1);
+            if(esq!=NULL){
+                new = esq;
+                while(esq->prox!=NULL)
+                    esq = esq->prox;
+                esq->prox = dir;
+            }else
+                new = dir;
+        }
+    }
+
+    return new; 
 }
 
 //40

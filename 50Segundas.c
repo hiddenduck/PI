@@ -521,16 +521,52 @@ int iguaisAB (ABin a, ABin b){
     return r;
 }
 
+//40
+int dumpAbin (ABin a, int v[], int N){
+    int r = 0, esq, dir;
+    if(a!=NULL && N>0){
+        esq = dumpAbin(a->esq, v, N);
+        if(esq < N){
+            v[esq] = a->valor;
+            dir = dumpAbin(a->dir, v+1+esq, N-1-esq);
+            r += 1 + esq + dir;
+        }else
+            r = N;
+    }
+
+    return r;
+}
+
+//41
+ABin somasAcA (ABin a){
+    ABin new = NULL;
+    if(a!=NULL){
+        ABin esq = somasAcA(a->esq);
+        ABin dir = somasAcA(a->dir);
+        new = malloc(sizeof(struct nodo));
+        new->dir = dir;
+        new->esq = esq; 
+        if(esq!=NULL && dir!=NULL)
+            new->valor = a->valor + esq->valor + dir->valor;
+        else if(esq!=NULL)
+            new->valor = a->valor + esq->valor;
+        else if(dir!=NULL)
+            new->valor = a->valor + dir->valor;
+        else
+            new->valor = a->valor;
+    }
+
+    return new;
+}
+
 //42
 int contaFolhas (ABin a){
     int r = 0;
     if(a!=NULL){
         if(a->esq==NULL && a->dir==NULL)
             r++;
-        else{
-            r += contaFolhas(a->esq);
-            r += contaFolhas(a->dir);
-        }
+        else
+            r += contaFolhas(a->esq) + contaFolhas(a->dir);
     }
 
     return r;

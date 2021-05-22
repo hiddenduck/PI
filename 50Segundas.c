@@ -386,7 +386,6 @@ LInt rotateL (LInt l){
 
 //27
 LInt parte (LInt l){
-    int i=0;
     LInt new = NULL, *sitio=&new;
     while(l!=NULL && l->prox!=NULL){
         if(new==NULL)

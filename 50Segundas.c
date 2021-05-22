@@ -545,6 +545,24 @@ LInt nivelL (ABin a, int n){
     return new; 
 }
 
+//39
+int nivelV (ABin a, int n, int v[]){
+    int r=0, esq, dir;
+    if(a!=NULL && n>=1){
+        if(n==1){
+            *v = a->valor;
+            r++;
+        }
+        else{
+            esq = nivelV(a->esq, n-1, v);
+            dir = nivelV(a->dir, n-1, v+esq);
+            r += esq + dir;
+        }
+    }
+
+    return r;
+}
+
 //40
 int dumpAbin (ABin a, int v[], int N){
     int r = 0, esq, dir;

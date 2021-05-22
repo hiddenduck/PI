@@ -452,6 +452,47 @@ void mirror (ABin *arv){
     }
 }
 
+//31
+void inorder (ABin arv, LInt *l){
+    if(arv!=NULL){
+        inorder(arv->esq, l);
+        while(*l!=NULL)
+            l = &((*l)->prox);
+        *l = malloc(sizeof(struct nodo));
+        (*l)->valor = arv->valor;
+        inorder(arv->dir, &((*l)->prox));
+    }else
+        *l = NULL;
+}
+
+//32
+void preorder (ABin arv, LInt *l){
+    if(arv!=NULL){
+        *l = malloc(sizeof(struct nodo));
+        (*l)->valor = arv->valor;
+        preorder(arv->esq, &((*l)->prox));
+        while(*l!=NULL)
+            l = &((*l)->prox);
+        preorder(arv->dir, l);
+    }else
+        *l = NULL;
+}
+
+//33
+void posorder (ABin arv, LInt *l){
+    if(arv!=NULL){
+        posorder(arv->esq, l);
+        while(*l!=NULL)
+            l = &((*l)->prox);
+        posorder(arv->dir, l);
+        while(*l!=NULL)
+            l = &((*l)->prox);
+        *l = calloc(1, sizeof(struct nodo));
+        (*l)->valor = arv->valor;
+    }else
+        *l = NULL;
+}
+
 //34
 int depth (ABin a, int x){
     int r = -1;

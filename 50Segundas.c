@@ -440,3 +440,199 @@ ABin cloneAB (ABin arv){
     }
     return new;
 }
+
+//30
+void mirror (ABin *arv){
+    if(*arv!=NULL){
+        ABin temp = (*arv)->dir;
+        (*arv)->dir = (*arv)->esq;
+        (*arv)->esq = temp;
+        mirror(&((*arv)->esq));
+        mirror(&((*arv)->dir));
+    }
+}
+
+//34
+int depth (ABin a, int x){
+    int r = -1;
+    if(a!=NULL){
+        if(a->valor == x)
+            r = 1;
+        else{
+            int rEsq = depth(a->esq, x);
+            int rDir = depth(a->dir, x);
+            if(rEsq==-1 && rDir==-1)
+                r = -1;
+            else if(rEsq==-1)
+                r = 1 + rDir;
+            else if(rDir==-1)
+                r = 1 + rEsq;
+            else
+                r = (rEsq < rDir) ? 1 + rEsq : 1 + rDir;
+        }
+    }
+
+    return r;
+}
+
+//35
+int freeAB (ABin a){
+    int r = 0;
+    if(a!=NULL){
+        r += freeAB(a->esq);
+        r += freeAB(a->dir);
+        free(a);
+        r++;
+    }
+
+    return r;
+}
+
+//36
+int pruneAB (ABin *a, int l){
+    int r = 0;
+    if(*a!=NULL){
+        if(l==0){
+            ABin temp = *a;
+            *a = NULL;
+            r += freeAB(temp);
+        }else{
+            r += pruneAB(&((*a)->dir), l-1);
+            r += pruneAB(&((*a)->esq), l-1);
+        }
+    }
+
+    return r;
+}
+
+//37
+int iguaisAB (ABin a, ABin b){
+    int r = 0;
+    if(a==NULL && b==NULL){
+        r = 1;
+    }else if(a!=NULL && b!=NULL){
+        r = a->valor == b->valor;
+        if(r!=0){
+            r = r && iguaisAB(a->esq, b->esq);
+            r = r && iguaisAB(a->dir, b->dir);
+        }
+    }
+
+    return r;
+}
+
+//42
+int contaFolhas (ABin a){
+    int r = 0;
+    if(a!=NULL){
+        if(a->esq==NULL && a->dir==NULL)
+            r++;
+        else{
+            r += contaFolhas(a->esq);
+            r += contaFolhas(a->dir);
+        }
+    }
+
+    return r;
+}
+
+//43
+ABin cloneMirror (ABin a){
+    ABin new = NULL;
+    if(a!=NULL){
+        new = malloc(sizeof(struct nodo));
+        new->valor = a->valor;
+        new->esq = cloneMirror(a->dir);
+        new->dir = cloneMirror(a->esq);
+    }
+
+    return new;
+}
+
+//44
+int addOrd (ABin *a, int x){
+    int r = 1;
+    while(*a!=NULL && (*a)->valor!=x){
+        if((*a)->valor > x)
+            a = &((*a)->esq);
+        else
+            a = &((*a)->dir);
+    }
+
+    if(*a==NULL){
+        r = 0;
+        *a = malloc(sizeof(struct nodo));
+        (*a)->valor = x;
+        (*a)->dir = (*a)->esq = NULL;
+    }
+
+    return r;
+}
+
+//45
+int lookupAB (ABin a, int x) {
+    int r = 0;
+    while(a!=NULL && a->valor!=x){
+        if(a->valor > x)
+            a = a->esq;
+        else
+            a = a->dir;
+    }
+
+    if(a!=NULL)
+        r = 1;
+
+    return r;
+}
+
+//46
+int depthOrd (ABin a, int x){
+    int r = 1;
+    while(a!=NULL && a->valor!=x){
+        if(a->valor > x){
+            r++;
+            a = a->esq;
+        }
+        else{
+            r++;
+            a = a->dir;
+        }
+    }
+
+    if(a==NULL)
+        r = -1;
+
+    return r;
+}
+
+//47
+int maiorAB (ABin arv){
+    while(arv->dir!=NULL)
+        arv = arv->dir;
+
+    return arv->valor;
+}
+
+//48
+void removeMaiorA (ABin *arv){
+    if(*arv!=NULL){
+        while((*arv)->dir != NULL)
+            arv = &((*arv)->dir);
+         ABin temp = *arv;
+         *arv = (*arv)->esq;
+         free(temp);
+    }
+}
+
+//49
+int quantosMaiores (ABin a, int x){
+    int r = 0;
+    if(a!=NULL){
+        if(a->valor <= x)
+            r += quantosMaiores(a->dir, x);
+        else
+            r += 1 + quantosMaiores(a->esq, x) + quantosMaiores(a->dir, x);
+    }
+
+    return r;
+}

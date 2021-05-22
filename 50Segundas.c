@@ -754,3 +754,7 @@ int quantosMaiores (ABin a, int x){
 
     return r;
 }
+
+//50 fazer 
+
+//51 fazer

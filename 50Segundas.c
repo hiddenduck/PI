@@ -755,6 +755,14 @@ int quantosMaiores (ABin a, int x){
     return r;
 }
 
-//50 fazer 
+//50
 
-//51 fazer
+
+//51
+int deProcuraAux (int valor, int bool, ABin a){
+    return a==NULL || (a!=NULL && (bool) ? a->valor < valor && deProcuraAux(valor, bool, a->esq) && deProcuraAux(valor, bool, a->dir) : a->valor > valor && deProcuraAux(valor, bool, a->esq) && deProcuraAux(valor, bool, a->dir));
+}
+
+int deProcura (ABin a){
+    return a==NULL || (a!=NULL && deProcuraAux(a->valor, 1, a->esq) && deProcuraAux(a->valor, 0, a->dir) && deProcura(a->esq) && deProcura(a->dir));
+}

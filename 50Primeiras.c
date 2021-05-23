@@ -123,13 +123,16 @@ char *mystrstr (char s1[], char s2[]) {
     int i,j, k;
     char *r = NULL;
 
-    for(i=0; s1[i]!='\0' && r==NULL; i++){
-        for(j=0, k=i; s2[j]!='\0' && s1[k]==s2[j]; j++, k++);
+    if(s2[0]=='\0')
+        r = s1;
+    else{
+        for(i=0; s1[i]!='\0' && r==NULL; i++){
+            for(j=0, k=i; s2[j]!='\0' && s1[k]==s2[j]; j++, k++);
 
-        if(s2[j]=='\0') r = s1 + i;
+            if(s2[j]=='\0') r = s1 + i;
+        }
     }
-
-    if(s2[0]=='\0') r = s1;
+    
 
     return r;
 }

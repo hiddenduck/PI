@@ -756,7 +756,24 @@ int quantosMaiores (ABin a, int x){
 }
 
 //50
+void listToBTreeAux (int m, LInt l, ABin *a){
+    if(l!=NULL && m>0){
+        int n = 0;
+        LInt start = l;
+        while(n > 0)
+            l = l->prox;
+        *a = malloc(sizeof(struct lligada));
+        (*a)->valor = l->valor;
+        listToBTreeAux(m/2, start, &((*a)->esq));
+        listToBTreeAux(m-m/2, l->prox, &((*a)->dir));
+    }else
+        *a = NULL;
+}
 
+void listToBTree (LInt l, ABin *a){
+    int tamanho = length(l);
+    listToBTreeAux(tamanho, l, a);
+}
 
 //51
 int deProcuraAux (int valor, int bool, ABin a){

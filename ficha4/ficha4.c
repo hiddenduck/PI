@@ -94,7 +94,7 @@ int duplicaVogais2 (char *s){
 int ordenado (int a[], int N){
     int r = 0, i;
 
-    for(i=0; i<N-1 && a[i]<a[i+1]; i++);
+    for(i=0; i<N-1 && a[i]<=a[i+1]; i++);
     if(i==N-1) r = 1;
 
     return r;

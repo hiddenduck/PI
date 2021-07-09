@@ -69,16 +69,21 @@ int bitsUm (unsigned int x){
 
 //5
 int trailingZ (unsigned int n) {
-    int contador = 0;
-    do{
-        if(n % 2)
-            break;
-        n /= 2;
-        contador++;
-    }while(n != 0);
-
-    return contador;
+    if(n==0)
+        return 32;
+    else{
+        int contador = 0;
+        do{
+            if(n % 2 == 1)
+                break;
+            n /= 2;
+            contador++;
+        }while(n != 0);
+    
+        return contador;
+    }
 }
+
 //6
 int qDig (int n) {
     int r = 0;

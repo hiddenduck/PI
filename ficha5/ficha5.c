@@ -44,7 +44,7 @@ int procuraNum (int num, Aluno t[], int N){
 void ordenaPorNum (Aluno t [], int N){
     int i, j, min;
     Aluno tmp;
-    for(i=0; i<N; i++){
+    for(i=0; i<N-1; i++){
         min = i;
         for(j=i+1; j<N; j++)
             if(t[j].numero<t[min].numero)

@@ -153,18 +153,17 @@ char *mystrstr (char s1[], char s2[]) {
 }
 
 //11
-void swapChars(char* s, int x, int y){
-    int t = s[x];
-    s[x] = s[y];
-    s[y] = t;
+void swapChar (char s[], int i, int j){
+    char t = s[i];
+    s[i] = s[j];
+    s[j] = t;
 }
 
 void mystrrev (char s[]){
-    int i, tamanho;
-    for(tamanho=0; s[tamanho]; tamanho++);
-    for(i=0, tamanho--; i<tamanho/2; i++, tamanho--){
-        swapChars(s, i, tamanho);
-    }
+    int len = strlen(s);
+    int i;
+    for(i=0; i<len; i++, len--)
+        swapChar(s, i, len-1);
 }
 
 //12

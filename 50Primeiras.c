@@ -6,43 +6,53 @@
 
 //1
 void exe1(){
-    int num;
-    int maximo = 0;
-    do{
-     assert(scanf("%d", &num)==1);
-     if(num > maximo)
-        maximo = num;   
-    }while(num != 0);
-    printf("Maior Numero Inteiro: %d\n", maximo);
+    int max, num;
+    scanf("%d", &num);
+    max = num;
+    while(num != 0){
+        if(num > max)
+            max = num;
+        scanf("%d", &num);
+    }
+    printf("%d", max);
 }
 
 //2
 void exe2(){
-    int num;
-    double media = 0;
-    int contador = 0;
-    do{
-        assert(scanf("%d", &num)==1);
-        media += num;
-        contador++; 
-    }while(num != 0);
-    printf("Media: %.f\n", media/contador);
+    double soma=0; 
+    int cont=0, num;
+    scanf("%d", &num);
+    while(num != 0){
+        soma += num;
+        cont++;
+        scanf("%d", &num);
+    }
+    printf("%g", soma/cont);
 }
 
 //3
 void exe3(){
-    int num;
-    int maximo1 = 0;
-    int maximo2 = 0;
-    do{
-     assert(scanf("%d", &num)==1);
-     if(num > maximo1){
-         maximo2 = maximo1;
-         maximo1 = num;
-     }else if(num > maximo2)
-        maximo2 = num;
-    }while(num != 0);
-    printf("Segundo Maior Numero Inteiro: %d\n", maximo2);
+    int max, num;
+    scanf("%d", &num);
+    max = num;
+    if(num!=0){
+        int segundoMax;
+        scanf("%d", &num);
+        if(num > max){
+            segundoMax = max;
+            max = num;
+        }else
+            segundoMax = num;
+        while(num!=0){
+            if(num > max){
+            segundoMax = max;
+            max = num;
+        }else if(num > segundoMax)
+            segundoMax = num;
+            scanf("%d", &num);
+        }
+        printf("%d", segundoMax);
+    }
 }
 
 //4

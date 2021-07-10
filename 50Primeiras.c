@@ -323,15 +323,12 @@ int sufPref (char s1[], char s2[]) {
 
 //20
 int contaPal (char s[]){
-    int i, j, contador=0, r;
-    
+    int i, cont = 0;
     for(i=0; s[i]!='\0'; i++){
-        if((s[i] != ' ' && s[i]!='\n') && s[i+1] == ' ' || (s[i] != ' ' && s[i]!='\n') && s[i+1] == '\0'){
-            contador++;
-        }       
+        if(s[i]!=' ' && s[i]!='\n' && (s[i+1]==' ' || s[i+1]=='\0'))
+            cont++;
     }
-        
-    return contador;
+    return cont;
 }
 
 //21

@@ -410,13 +410,10 @@ int limpaEspacos (char texto[]) {
 //26
 void insere (int v[], int N, int x){
     int i, j, flag=0;
-
     for(i=0; i<N && flag==0; i++){
-        if(x <= v[i]){
-            v[N+1] = v[N];
-            for(j=N; j>i; j--){
+        if(v[i]>x){
+            for(j=N; j>i; j--)
                 v[j] = v[j-1];
-            }
             v[i] = x;
             flag = 1;
         }

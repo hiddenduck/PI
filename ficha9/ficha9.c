@@ -105,11 +105,12 @@ struct nodo *procuraRecursivo (ABin a, int x){
 }
 
 struct nodo *procura (ABin a, int x){
-    while(a != NULL && a->valor != x)
+    while(a != NULL && a->valor != x){
         if(a->valor > x)
             a = a->esq;
         else
             a = a->dir;
+    }
 
     return a;
 }

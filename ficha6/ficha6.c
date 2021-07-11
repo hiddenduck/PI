@@ -35,7 +35,7 @@ int Spop (SStack s, int *x){
     int r=1;
     if(s->sp>0){
         r=0;
-        *x = s->values[s->sp--];
+        *x = s->values[--s->sp];
     }
 
     return r;

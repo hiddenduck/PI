@@ -63,7 +63,7 @@ ABin maisEsquerda3 (ABin a){
 }
 
 void imprimeNivel(ABin a, int l){
-    if(a!=NULL){
+    if(a!=NULL && l>=0){
         if(l==0)
             printf("%d ", a->valor);
         else{
